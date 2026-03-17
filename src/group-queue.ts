@@ -344,6 +344,15 @@ export class GroupQueue {
     }
   }
 
+  /**
+   * Returns true if the group currently has an active container running.
+   * Used to detect busy state for sending holding messages.
+   */
+  isProcessing(groupJid: string): boolean {
+    const state = this.groups.get(groupJid);
+    return state?.active === true;
+  }
+
   async shutdown(_gracePeriodMs: number): Promise<void> {
     this.shuttingDown = true;
 

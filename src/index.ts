@@ -64,6 +64,21 @@ import { logger } from './logger.js';
 // Re-export for backwards compatibility during refactor
 export { escapeXml, formatMessages } from './router.js';
 
+const BUSY_MESSAGES = [
+  '⚡ Mid-mission, Commander. Blaze has me in the war room — back shortly.',
+  "🔭 Recon's feeding me live intel right now. Apex doesn't ghost, give me 60 seconds.",
+  "🧠 Sage has me crunching numbers. I'll surface with answers — standby.",
+  "🛡️ Sentinel flagged something. Running diagnostics — won't be long.",
+  '📡 Deep in the matrix. The swarm never sleeps, but it does ask for patience.',
+  "🔱 Apex is locked in. Every second counts in the market — I'll be right back.",
+  "⚙️ Running system ops. Can't multitask at this level — give me a moment, Commander.",
+  '🌐 Mid-scan across 47 markets. Hold tight.',
+];
+
+function getRandomBusyMessage(): string {
+  return BUSY_MESSAGES[Math.floor(Math.random() * BUSY_MESSAGES.length)];
+}
+
 let lastTimestamp = '';
 let sessions: Record<string, string> = {};
 let registeredGroups: Record<string, RegisteredGroup> = {};
@@ -419,6 +434,21 @@ async function startMessageLoop(): Promise<void> {
           const messagesToSend =
             allPending.length > 0 ? allPending : groupMessages;
           const formatted = formatMessages(messagesToSend, TIMEZONE);
+
+          // If the bot is already processing for this group, fire a creative
+          // holding message immediately before queuing the new request.
+          if (queue.isProcessing(chatJid)) {
+            const busyMsg = getRandomBusyMessage();
+            channel
+              .sendMessage(chatJid, busyMsg)
+              ?.catch((err) =>
+                logger.warn(
+                  { chatJid, err },
+                  'Failed to send busy holding message',
+                ),
+              );
+            logger.debug({ chatJid }, 'Sent busy holding message');
+          }
 
           if (queue.sendMessage(chatJid, formatted)) {
             logger.debug(
