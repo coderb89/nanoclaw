@@ -66,12 +66,12 @@ export { escapeXml, formatMessages } from './router.js';
 
 const BUSY_MESSAGES = [
   '⚡ Mid-mission, Commander. Blaze has me in the war room — back shortly.',
-  '🔭 Recon\'s feeding me live intel right now. Apex doesn\'t ghost, give me 60 seconds.',
-  '🧠 Sage has me crunching numbers. I\'ll surface with answers — standby.',
-  '🛡️ Sentinel flagged something. Running diagnostics — won\'t be long.',
+  "🔭 Recon's feeding me live intel right now. Apex doesn't ghost, give me 60 seconds.",
+  "🧠 Sage has me crunching numbers. I'll surface with answers — standby.",
+  "🛡️ Sentinel flagged something. Running diagnostics — won't be long.",
   '📡 Deep in the matrix. The swarm never sleeps, but it does ask for patience.',
-  '🔱 Apex is locked in. Every second counts in the market — I\'ll be right back.',
-  '⚙️ Running system ops. Can\'t multitask at this level — give me a moment, Commander.',
+  "🔱 Apex is locked in. Every second counts in the market — I'll be right back.",
+  "⚙️ Running system ops. Can't multitask at this level — give me a moment, Commander.",
   '🌐 Mid-scan across 47 markets. Hold tight.',
 ];
 
