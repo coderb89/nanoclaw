@@ -20,6 +20,12 @@ groups/discord_*/*
 !groups/main/CLAUDE.md
 !groups/global/CLAUDE.md
 !groups/discord_*/CLAUDE.md
+!groups/discord_lumiere-french/
+groups/discord_lumiere-french/*
+!groups/discord_lumiere-french/CLAUDE.md
+!groups/discord_gaffer-fpl/
+groups/discord_gaffer-fpl/*
+!groups/discord_gaffer-fpl/CLAUDE.md
 
 # Secrets
 *.keys.json
