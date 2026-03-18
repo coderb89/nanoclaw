@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.nanoclaw.deploysupervisor</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/brij/nanoclaw/scripts/deploy-supervisor.sh</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/brij</string>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>GITHUB_TOKEN</key>
+        <string>REPLACE_WITH_GITHUB_PAT</string>
+    </dict>
+    <key>StartInterval</key>
+    <integer>600</integer>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/brij/nanoclaw/logs/deploy-supervisor.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/brij/nanoclaw/logs/deploy-supervisor.log</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/brij/nanoclaw</string>
+</dict>
+</plist>
